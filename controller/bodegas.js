@@ -8,17 +8,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Expose, Type, Transform } from "class-transformer";
-export class user {
-    //En este constructor van los nombres como estan en la base de datos 
-    constructor(id, nom_com, eda) {
-        this.id = id;
-        this.nom_com = nom_com;
-        this.eda = eda;
-    }
-    get nombreId() {
-        return `
-        ${this.id} - ${this.nom_com}`;
-    }
+export class bodegas {
 }
 __decorate([
     Expose({ name: "id" }),
@@ -26,19 +16,35 @@ __decorate([
         if (Math.floor(value) && typeof value == "number")
             return Math.floor(value);
         else
-            throw { status: 400, message: `EL id no cumple con lo requerido` };
-    }, { toClassOnly: true })
-    // (parseInt(value)) ? value :"Error ",{toClassOnly: true})
-    ,
+            throw { status: 400, message: `Id no cumple con lo pedido` };
+    }, { toClassOnly: true }),
     __metadata("design:type", Number)
-], user.prototype, "id", void 0);
+], bodegas.prototype, "id", void 0);
 __decorate([
     Expose({ name: "nombre" }),
     Type(() => String),
     __metadata("design:type", String)
-], user.prototype, "nom_com", void 0);
+], bodegas.prototype, "nom_bodega", void 0);
 __decorate([
-    Expose({ name: "edad" }),
-    Transform(({ value }) => parseInt(value), { toClassOnly: true }),
+    Expose({ name: "id_responsable" }),
+    Transform(({ value }) => {
+        if (Math.floor(value) && typeof value == "number")
+            return Math.floor(value);
+        else
+            throw { status: 400, message: `El id no esta asignado` };
+    }, { toClassOnly: true }),
     __metadata("design:type", Number)
-], user.prototype, "eda", void 0);
+], bodegas.prototype, "id_bodega", void 0);
+__decorate([
+    Expose({ name: "estado" }),
+    Type(() => String),
+    __metadata("design:type", String)
+], bodegas.prototype, "estado_bodega", void 0);
+__decorate([
+    Expose({ name: "cretaed_by" }),
+    Transform(({ value }) => { if (Math.floor(value) && typeof value == "number")
+        return Math.floor(value);
+    else
+        throw { status: 400, message: `el id no esta asignado` }; }, { toClassOnly: true }),
+    __metadata("design:type", Number)
+], bodegas.prototype, "id_responsable", void 0);
